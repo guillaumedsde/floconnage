@@ -3,7 +3,9 @@
 {
   imports = [
     ./modules/zed-editor.nix
-    # other modules...
+    ./modules/zsh.nix
+    ./modules/fzf.nix
+    ./modules/ghostty.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
