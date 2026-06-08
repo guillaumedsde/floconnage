@@ -1,10 +1,14 @@
 { pkgs, ... }: {
   programs.zed-editor = {
     enable = true;
-    extensions = [ "nix" ];
+    extensions = [
+      "nix"
+      "rumdl"
+    ];
     extraPackages = [
       pkgs.nil
       pkgs.nixd
+      pkgs.rumdl # TODO: check if zed uses this rumdl
     ];
     userSettings = {
       auto_update = false;
