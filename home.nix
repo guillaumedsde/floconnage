@@ -6,6 +6,7 @@
     ./modules/zsh.nix
     ./modules/fzf.nix
     ./modules/ghostty.nix
+    ./modules/firefox.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
