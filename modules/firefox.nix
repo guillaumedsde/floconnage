@@ -1,6 +1,20 @@
-{ ... }: {
+{ lib, pkgs, ... }: {
   programs.firefox = {
     enable = true;
+
+    profiles.default = {
+      extraConfig = lib.strings.concatLines [
+        # Arkenfox
+        (builtins.readFile "${pkgs.arkenfox-userjs}/user.js")
+        ''
+          user_pref("privacy.resistFingerprinting.letterboxing", false);
+          user_pref("webgl.disabled", false);
+          user_pref("keyword.enabled", true);
+          user_pref("network.dns.disableIPv6", false);
+          user_pref("browser.tabs.firefox-view", false);
+        ''
+      ];
+    };
     policies = {
       AIControls = {
         Default.Value = "blocked";
