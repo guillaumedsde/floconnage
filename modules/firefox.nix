@@ -28,6 +28,7 @@
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
       BackgroundAppUpdate = false;
+      DefaultSerialGuardSetting = 2;
       DisableAppUpdate = true;
       DisableFeedbackCommands = true;
       DisableFirefoxAccounts = true;
@@ -37,11 +38,11 @@
       DisableTelemetry = true;
       DisplayBookmarksToolbar = "always";
       EnableTrackingProtection = {
-        Value = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-        EmailTracking = true;
-        SuspectedFingerprinting = true;
+        # Value = true;
+        # Cryptomining = true;
+        # Fingerprinting = true;
+        # EmailTracking = true;
+        # SuspectedFingerprinting = true;
         Category = "strict";
         BaselineExceptions = true;
         ConvenienceExceptions = true;
@@ -55,6 +56,7 @@
         SponsoredPocket = false;
         SponsoredStories = false;
         Snippets = false;
+        Weather = false;
       };
       FirefoxSuggest.WebSuggestions = false;
       GenerativeAI = {
