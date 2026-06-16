@@ -7,9 +7,11 @@
     ./modules/fzf.nix
     ./modules/ghostty.nix
     ./modules/firefox.nix
+    ./modules/keepassxc.nix
   ];
 
   targets.genericLinux.enable = true;
+  xdg.autostart.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
