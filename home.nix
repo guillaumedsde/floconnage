@@ -3,7 +3,7 @@
 {
   imports = [
     ./modules/zed-editor.nix
-    ./modules/zsh.nix
+    ./modules/zsh
     ./modules/fzf.nix
     ./modules/ghostty.nix
     ./modules/firefox.nix
