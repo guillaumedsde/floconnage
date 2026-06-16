@@ -36,6 +36,7 @@
         nil.binary.path = lib.getExe pkgs.nil;
         nixd.binary.path = lib.getExe pkgs.nixd;
         gitlab-ci.binary.path = lib.getExe pkgs.gitlab-ci-ls;
+        gopls.binary.path = lib.getExe pkgs.gopls;
         tofu-ls = {
           binary = {
             path = lib.getExe pkgs.tofu-ls;
