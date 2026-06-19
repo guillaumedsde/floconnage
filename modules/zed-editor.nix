@@ -9,6 +9,9 @@
       "dockerfile"
       "gitlab-ci-ls"
     ];
+    extraPackages = [
+      pkgs.uv
+    ];
     userSettings = {
       auto_update = false;
       telemetry = {
@@ -37,31 +40,15 @@
         nixd.binary.path = lib.getExe pkgs.nixd;
         gitlab-ci.binary.path = lib.getExe pkgs.gitlab-ci-ls;
         gopls.binary.path = lib.getExe pkgs.gopls;
-        tofu-ls = {
-          binary = {
-            path = lib.getExe pkgs.tofu-ls;
-            arguments = [ "serve" ];
-          };
-        };
-        dockerfile-language-server = {
-          binary = {
-            path = lib.getExe pkgs.dockerfile-language-server;
-            arguments = [ "--stdio" ];
-          };
-        };
-        rumdl.binary = {
-          path = lib.getExe pkgs.rumdl;
-          arguments = [ "server" ];
-        };
-        ansible = {
-          binary = {
-            path = lib.getExe pkgs.ansible-language-server;
-            arguments = [ "--stdio" ];
-          };
-          settings = {
-            ansible.path = lib.getExe' pkgs.ansible "ansible";
-            validation.lint.path = lib.getExe pkgs.ansible-lint;
-          };
+        basedpyright.binary.path = lib.getExe' pkgs.basedpyright "basedpyright-langserver";
+        ruff.binary.path = lib.getExe pkgs.ruff;
+        tofu-ls.binary.path = lib.getExe pkgs.tofu-ls;
+        dockerfile-language-server.binary.path = lib.getExe pkgs.dockerfile-language-server;
+        rumdl.binary.path = lib.getExe pkgs.rumdl;
+        ansible.binary.path = lib.getExe pkgs.ansible-language-server;
+        ansible.settings = {
+          ansible.path = lib.getExe' pkgs.ansible "ansible";
+          validation.lint.path = lib.getExe pkgs.ansible-lint;
         };
         yaml-language-server = {
           binary = {
