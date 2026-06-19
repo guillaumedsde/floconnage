@@ -7,8 +7,9 @@
         AdvancedSettings = true;
         LaunchAtStartup = true;
         ShowTrayIcon = true;
+        TrayIconAppearance = "monochrome";
         MinimizeToTray = true;
-        MinimizeOnStartup = true;
+        MinimizeOnStartup = false;
         ColorPasswords = true;
         CheckForUpdates = false;
       };
