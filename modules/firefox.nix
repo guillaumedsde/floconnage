@@ -40,7 +40,12 @@
       DisableTelemetry = true;
       DisplayBookmarksToolbar = "always";
       EnableTrackingProtection = {
-        Category = "strict";
+        Value = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+        EmailTracking = true;
+        SuspectedFingerprinting = true;
+        Category = "standard";
         BaselineExceptions = true;
         ConvenienceExceptions = true;
       };
