@@ -9,9 +9,17 @@
         "keyword.enabled" = true;
         "network.dns.disableIPv6" = false;
         "browser.tabs.firefox-view" = false;
+        "browser.newtabpage.enabled" = true;
+        "browser.sessionstore.resume_from_crash" = false;
+        "browser.startup.page" = 1;
         "browser.chrome.site_icons" = true;
         "identity.fxaccounts.enabled" = false;
-        "signon.firefoxRelay.feature" = false;
+        "signon.firefoxRelay.feature" = "disabled";
+        "browser.backup.enabled" = false;
+        "browser.backup.restore.enabled" = false;
+        "browser.backup.archive.enabled" = false;
+        "browser.urlbar.trustPanel.breachAlerts" = false;
+        "browser.urlbar.trustPanel.breachAlerts.featureGate" = false;
       };
     };
     nativeMessagingHosts = with pkgs; [
