@@ -17,6 +17,9 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
+      homeManagerModules = {
+        all = [ ./modules ];
+      };
       homeConfigurations."architect" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
