@@ -80,7 +80,8 @@
   #  /etc/profiles/per-user/architect/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    DIFFPROG = "zeditor --diff";
+    EDITOR = "zeditor --wait";
   };
 
   # Let Home Manager install and manage itself.
