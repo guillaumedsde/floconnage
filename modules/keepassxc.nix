@@ -8,6 +8,8 @@
         LaunchAtStartup = true;
         ShowTrayIcon = true;
         TrayIconAppearance = "monochrome";
+        MinimizeToTray = true;
+        MinimizeOnStartup = false;
         ColorPasswords = true;
         CheckForUpdates = false;
       };
