@@ -13,7 +13,6 @@
         "browser.sessionstore.resume_from_crash" = false;
         "browser.startup.page" = 1;
         "browser.chrome.site_icons" = true;
-        "identity.fxaccounts.enabled" = false;
         "signon.firefoxRelay.feature" = "disabled";
         "browser.backup.enabled" = false;
         "browser.backup.restore.enabled" = false;
@@ -33,7 +32,6 @@
       DefaultSerialGuardSetting = 2;
       DisableAppUpdate = true;
       DisableFeedbackCommands = true;
-      DisableFirefoxAccounts = true;
       DisableFirefoxStudies = true;
       DisableFormHistory = true;
       DisableRemoteImprovements = true;
