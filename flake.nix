@@ -17,9 +17,20 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      homeManagerModules = {
-        all = [ ./modules ];
-      };
+      homeManagerModules.all =
+        let
+          modules = [
+            ./modules/zed-editor.nix
+            ./modules/zsh
+            ./modules/fzf.nix
+            ./modules/ghostty.nix
+            ./modules/firefox.nix
+            ./modules/keepassxc.nix
+          ];
+        in
+        {
+          imports = modules;
+        };
       homeConfigurations."architect" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 

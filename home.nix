@@ -1,15 +1,6 @@
 { ... }:
 
 {
-  imports = [
-    ./modules/zed-editor.nix
-    ./modules/zsh
-    ./modules/fzf.nix
-    ./modules/ghostty.nix
-    ./modules/firefox.nix
-    ./modules/keepassxc.nix
-  ];
-
   targets.genericLinux.enable = true;
   xdg.autostart.enable = true;
 
