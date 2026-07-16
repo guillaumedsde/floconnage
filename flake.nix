@@ -15,28 +15,22 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      allModules = [
+        ./modules/zed-editor.nix
+        ./modules/zsh
+        ./modules/fzf.nix
+        ./modules/ghostty.nix
+        ./modules/firefox.nix
+        ./modules/keepassxc.nix
+      ];
     in
     {
-      homeManagerModules.all =
-        let
-          modules = [
-            ./modules/zed-editor.nix
-            ./modules/zsh
-            ./modules/fzf.nix
-            ./modules/ghostty.nix
-            ./modules/firefox.nix
-            ./modules/keepassxc.nix
-          ];
-        in
-        {
-          imports = modules;
-        };
       homeConfigurations."architect" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = allModules ++ [ ./home.nix ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
