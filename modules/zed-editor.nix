@@ -21,7 +21,6 @@
       disable_ai = true;
       title_bar.show_sign_in = false;
       collaboration_panel.button = false;
-      outline_panel.button = false;
       preview_tabs.enabled = false;
       git_panel.dock = "left";
       project_panel.dock = "left";
