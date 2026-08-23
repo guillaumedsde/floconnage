@@ -27,7 +27,9 @@
     pkgs.sops
     pkgs.opentofu
     pkgs.jq
-
+    pkgs.ansible
+    pkgs.ansible-lint
+    pkgs.python314Packages.libvirt
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
