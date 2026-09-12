@@ -11,6 +11,7 @@
     extensions = [
       "nix"
       "opentofu"
+      "tflint"
       "rumdl"
       "ansible"
       "dockerfile"
@@ -100,6 +101,10 @@
         basedpyright.binary.path = lib.getExe' pkgs.basedpyright "basedpyright-langserver";
         ruff.binary.path = lib.getExe pkgs.ruff;
         tofu-ls.binary.path = lib.getExe pkgs.tofu-ls;
+        tflint.initialization_options.command = [
+          lib.getExe pkgs.tflint
+          "--langserver"
+        ];
         docker-language-server = {
           binary.path = lib.getExe pkgs.docker-language-server;
           initialization_options = {
