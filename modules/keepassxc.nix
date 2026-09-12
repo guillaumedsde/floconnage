@@ -26,7 +26,6 @@
         SearchInAllDatabases = true;
       };
       SSHAgent.Enabled = true;
-      };
     };
   };
 }
