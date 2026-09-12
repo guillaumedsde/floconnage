@@ -81,6 +81,10 @@
           enabled = true;
           url = "https://docs.siderolabs.com/mcp";
         };
+        "JSON Schema Store MCP" = {
+          enabled = true;
+          url = "https://mcp.schemastore.org/";
+        };
       };
       granted_extension_capabilities = [ ];
       node = {
