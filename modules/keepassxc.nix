@@ -25,8 +25,7 @@
         UpdateBinaryPath = false;
         SearchInAllDatabases = true;
       };
-      SSHAgent = {
-        Enabled = true;
+      SSHAgent.Enabled = true;
       };
     };
   };
