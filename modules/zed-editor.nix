@@ -72,6 +72,16 @@
         };
         ollama = { };
       };
+      context_servers = {
+        "OpenTofu MCP" = {
+          enabled = true;
+          url = "https://mcp.opentofu.org/mcp";
+        };
+        "Talos Linux MCP" = {
+          enabled = true;
+          url = "https://docs.siderolabs.com/mcp";
+        };
+      };
       granted_extension_capabilities = [ ];
       node = {
         path = lib.getExe pkgs.nodejs;
