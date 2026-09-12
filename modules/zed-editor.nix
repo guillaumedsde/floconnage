@@ -18,16 +18,53 @@
         diagnostics = false;
         metrics = false;
       };
-      disable_ai = true;
+      edit_predictions = {
+        provider = "none";
+        allow_data_collection = "no";
+      };
       title_bar.show_sign_in = false;
       collaboration_panel.button = false;
       preview_tabs.enabled = false;
       git_panel.dock = "left";
       project_panel.dock = "left";
       base_keymap = "VSCode";
+      terminal.max_scroll_history_lines = 25000;
       # TODO
       # buffer_font_family = "Fira Code";
       theme = "Ayu Light";
+      agent = {
+        dock = "right";
+        default_profile = "write";
+        default_model = {
+          provider = "Mistral OpenAI API";
+          model = "zai-glm-5-2";
+          enable_thinking = true;
+        };
+      };
+      language_models = {
+        openai_compatible = {
+          "Mistral OpenAI API" = {
+            api_url = "https://api.mistral.ai/v1";
+            available_models = [
+              {
+                name = "zai-glm-5-2";
+                max_tokens = 1000000;
+                max_output_tokens = 128000;
+                max_completion_tokens = 200000;
+                capabilities = {
+                  tools = true;
+                  images = false;
+                  parallel_tool_calls = false;
+                  prompt_cache_key = false;
+                  chat_completions = true;
+                  interleaved_reasoning = false;
+                };
+              }
+            ];
+          };
+        };
+        ollama = { };
+      };
       granted_extension_capabilities = [ ];
       node = {
         path = lib.getExe pkgs.nodejs;
@@ -42,6 +79,12 @@
         basedpyright.binary.path = lib.getExe' pkgs.basedpyright "basedpyright-langserver";
         ruff.binary.path = lib.getExe pkgs.ruff;
         tofu-ls.binary.path = lib.getExe pkgs.tofu-ls;
+        docker-language-server = {
+          binary.path = lib.getExe pkgs.docker-language-server;
+          initialization_options = {
+            telemetry = "off";
+          };
+        };
         dockerfile-language-server.binary.path = lib.getExe pkgs.dockerfile-language-server;
         rumdl.binary.path = lib.getExe pkgs.rumdl;
         ansible.binary.path = lib.getExe pkgs.ansible-language-server;
