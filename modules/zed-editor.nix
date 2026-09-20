@@ -41,6 +41,7 @@
       # buffer_font_family = "Fira Code";
       theme = "Ayu Light";
       agent = {
+        sidebar_side = "right";
         dock = "right";
         default_profile = "write";
         default_model = {
@@ -93,7 +94,10 @@
         npm_path = lib.getExe' pkgs.nodejs "npm";
       };
       lsp = {
-        bash-language-server.binary.path = lib.getExe pkgs.bash-language-server;
+        bash-language-server.binary = {
+          path = lib.getExe pkgs.bash-language-server;
+          arguments = [ "start" ];
+        };
         nil.binary.path = lib.getExe pkgs.nil;
         nixd.binary.path = lib.getExe pkgs.nixd;
         gopls.binary.path = lib.getExe pkgs.gopls;
@@ -108,15 +112,15 @@
         };
         basedpyright.binary = {
           path = lib.getExe' pkgs.basedpyright "basedpyright-langserver";
-          arguments = ["--stdio"];
+          arguments = [ "--stdio" ];
         };
         ruff.binary = {
           path = lib.getExe pkgs.ruff;
-          arguments = ["server"];
+          arguments = [ "server" ];
         };
         tofu-ls.binary = {
           path = lib.getExe pkgs.tofu-ls;
-          arguments = ["serve"];
+          arguments = [ "serve" ];
         };
         tflint.initialization_options.command = "${lib.getExe pkgs.tflint}";
         docker-language-server = {
@@ -140,7 +144,7 @@
         };
         rumdl.binary = {
           path = lib.getExe pkgs.rumdl;
-          arguments = ["server"];
+          arguments = [ "server" ];
         };
         ansible.binary = {
           path = lib.getExe pkgs.ansible-language-server;
@@ -165,7 +169,10 @@
       languages = {
         # NOTE: nil is not used but still installed to prevent zed from
         # trying to install it
-        Nix.language_servers = ["nixd" "!nil"];
+        Nix.language_servers = [
+          "nixd"
+          "!nil"
+        ];
         "Shell Script".formatter.external = {
           command = lib.getExe pkgs.shfmt;
           arguments = [
