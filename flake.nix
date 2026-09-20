@@ -32,6 +32,17 @@
       ];
     in
     {
+      # Reusable modules exposed for consumption by other flakes.
+      # Import individually: inputs.home-manager.homeManagerModules.<name>
+      homeManagerModules = {
+        zed-editor = import ./modules/zed-editor.nix;
+        zsh = import ./modules/zsh;
+        fzf = import ./modules/fzf.nix;
+        gnome-terminal = import ./modules/gnome-terminal.nix;
+        firefox = import ./modules/firefox.nix;
+        keepassxc = import ./modules/keepassxc.nix;
+      };
+
       homeConfigurations."architect" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
