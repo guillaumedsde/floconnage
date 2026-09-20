@@ -15,7 +15,7 @@
       "rumdl"
       "ansible"
       "dockerfile"
-      "gitlab-ci-ls"
+      "golangci-lint"
     ];
     extraPackages = [
       pkgs.uv
@@ -96,21 +96,58 @@
         bash-language-server.binary.path = lib.getExe pkgs.bash-language-server;
         nil.binary.path = lib.getExe pkgs.nil;
         nixd.binary.path = lib.getExe pkgs.nixd;
-        gitlab-ci.binary.path = lib.getExe pkgs.gitlab-ci-ls;
         gopls.binary.path = lib.getExe pkgs.gopls;
-        basedpyright.binary.path = lib.getExe' pkgs.basedpyright "basedpyright-langserver";
-        ruff.binary.path = lib.getExe pkgs.ruff;
-        tofu-ls.binary.path = lib.getExe pkgs.tofu-ls;
+        golangci-lint = {
+          # https://github.com/nametake/golangci-lint-langserver#configuration
+          binary.path = lib.getExe pkgs.golangci-lint-langserver;
+          initialization_options.command = [
+            "${lib.getExe pkgs.golangci-lint}"
+            "run"
+            "--output.json.path"
+          ];
+        };
+        basedpyright.binary = {
+          path = lib.getExe' pkgs.basedpyright "basedpyright-langserver";
+          arguments = ["--stdio"];
+        };
+        ruff.binary = {
+          path = lib.getExe pkgs.ruff;
+          arguments = ["server"];
+        };
+        tofu-ls.binary = {
+          path = lib.getExe pkgs.tofu-ls;
+          arguments = ["serve"];
+        };
         tflint.initialization_options.command = "${lib.getExe pkgs.tflint}";
         docker-language-server = {
-          binary.path = lib.getExe pkgs.docker-language-server;
+          binary = {
+            path = lib.getExe pkgs.docker-language-server;
+            arguments = [
+              "start"
+              "--stdio"
+            ];
+          };
           initialization_options = {
             telemetry = "off";
           };
         };
-        dockerfile-language-server.binary.path = lib.getExe pkgs.dockerfile-language-server;
-        rumdl.binary.path = lib.getExe pkgs.rumdl;
-        ansible.binary.path = lib.getExe pkgs.ansible-language-server;
+        dockerfile-language-server.binary = {
+          path = lib.getExe pkgs.dockerfile-language-server;
+          arguments = [
+            "start"
+            "--stdio"
+          ];
+        };
+        rumdl.binary = {
+          path = lib.getExe pkgs.rumdl;
+          arguments = ["server"];
+        };
+        ansible.binary = {
+          path = lib.getExe pkgs.ansible-language-server;
+          arguments = [
+            "--stdio"
+          ];
+        };
         ansible.settings = {
           ansible.path = lib.getExe' pkgs.ansible "ansible";
           validation.lint.path = lib.getExe pkgs.ansible-lint;
@@ -126,6 +163,9 @@
         };
       };
       languages = {
+        # NOTE: nil is not used but still installed to prevent zed from
+        # trying to install it
+        Nix.language_servers = ["nixd" "!nil"];
         "Shell Script".formatter.external = {
           command = lib.getExe pkgs.shfmt;
           arguments = [
