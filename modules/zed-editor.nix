@@ -19,6 +19,7 @@
     ];
     extraPackages = [
       pkgs.uv
+      pkgs.nixfmt
     ];
     userSettings = {
       auto_update = false;
