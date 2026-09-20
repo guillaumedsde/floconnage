@@ -26,7 +26,7 @@
         ./modules/zed-editor.nix
         ./modules/zsh
         ./modules/fzf.nix
-        ./modules/ghostty.nix
+        ./modules/gnome-terminal.nix
         ./modules/firefox.nix
         ./modules/keepassxc.nix
       ];
