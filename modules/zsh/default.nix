@@ -1,7 +1,7 @@
 { ... }: {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = false;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     history.size = 10000;
     history.save = 20000;
