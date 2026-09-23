@@ -13,6 +13,9 @@
         "browser.sessionstore.resume_from_crash" = false;
         "browser.startup.page" = 1;
         "browser.chrome.site_icons" = true;
+        # Arkenfox disables spell checking (layout.spellcheckDefault = 0);
+        # re-enable it for both multi-line and single-line inputs.
+        "layout.spellcheckDefault" = 2;
         "signon.firefoxRelay.feature" = "disabled";
         "browser.backup.enabled" = false;
         "browser.backup.restore.enabled" = false;
