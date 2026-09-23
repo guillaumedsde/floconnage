@@ -26,6 +26,7 @@
         ./modules/zed-editor.nix
         ./modules/zsh
         ./modules/fzf.nix
+        ./modules/fonts.nix
         ./modules/gnome-terminal.nix
         ./modules/firefox.nix
         ./modules/keepassxc.nix
@@ -38,6 +39,7 @@
         zed-editor = import ./modules/zed-editor.nix;
         zsh = import ./modules/zsh;
         fzf = import ./modules/fzf.nix;
+        fonts = import ./modules/fonts.nix;
         gnome-terminal = import ./modules/gnome-terminal.nix;
         firefox = import ./modules/firefox.nix;
         keepassxc = import ./modules/keepassxc.nix;
