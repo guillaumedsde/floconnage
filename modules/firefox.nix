@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   programs.firefox = {
     enable = true;
     profiles.default = {
@@ -102,6 +102,14 @@
         };
         "sponsorBlocker@ajay.app" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+        };
+      };
+      "3rdparty".Extensions."keepassxc-browser@keepassxc.org" = {
+        settings = {
+          autoRetrieveCredentials = false;
+          showLoginNotifications = false;
+          defaultPasswordManager = true;
+          passkeys = lib.mkDefault true;
         };
       };
     };
