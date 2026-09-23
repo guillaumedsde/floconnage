@@ -6,8 +6,6 @@
       visibleName = "default";
       default = true;
       scrollbackLines = 20000;
-      # `useSystemFont = false` is required for a custom font to take effect.
-      useSystemFont = false;
       font = "Fira Code 12";
     };
   };
