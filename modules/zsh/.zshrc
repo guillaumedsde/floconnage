@@ -59,3 +59,5 @@ bindkey '5~' kill-word
 PROMPT='%~ %# '
 
 zstyle ':completion:*' menu select
+
+export FZF_CTRL_R_OPTS="--layout=reverse --info=hidden"
