@@ -1,16 +1,8 @@
 # Floconnage
 
-Common Home Manager configuration shared across machines.
-
-## Getting started
-
-1. Install nix
-2. [Install Home-manager][home-manager-install]
-3. For non-NixOS Linux distributions:
-
-   ```bash
-   sudo $(which non-nixos-gpu-setup)
-    ```
+Common Home Manager modules shared across machines. This flake is a pure
+module library: it only exposes `homeManagerModules` and does not define any
+`homeConfigurations` of its own.
 
 ## Reusing modules from another flake
 
@@ -28,6 +20,7 @@ Then select the modules you want:
 
 ```nix
 modules = [
+  common.homeManagerModules.common  # shared baseline: packages, session variables, ...
   common.homeManagerModules.zed-editor
   common.homeManagerModules.zsh
   common.homeManagerModules.fzf
@@ -42,14 +35,25 @@ Available modules under `homeManagerModules`:
 
 | Key             | Source                  |
 |-----------------|-------------------------|
+| `common`        | `modules/common.nix`    |
 | `zed-editor`    | `modules/zed-editor.nix`|
 | `zsh`           | `modules/zsh`            |
 | `fzf`           | `modules/fzf.nix`        |
 | `gnome-terminal`| `modules/gnome-terminal.nix` |
 | `firefox`       | `modules/firefox.nix`    |
 | `keepassxc`     | `modules/keepassxc.nix`  |
+| `fonts`         | `modules/fonts.nix`     |
+| `bat`           | `modules/bat`            |
+
+The `common` module holds configuration shared by every consuming machine:
+packages, session variables and other baseline settings. It composes with the
+machine's own `home.nix` as follows:
+
+- `home.packages` lists are concatenated: machine packages add up to the
+  common ones.
+- `home.sessionVariables` merges per key; to override a value, use
+  `lib.mkForce` in the machine's `home.nix` (redefining a key without
+  `mkForce` is a conflict error).
 
 Machine-specific settings and overrides go in the consuming flake's
-`home.nix`, which is evaluated after the imported modules so its values win.
-
-[home-manager-install]: https://nix-community.github.io/home-manager/index.xhtml#ch-nix-flakes
+`home.nix`.
