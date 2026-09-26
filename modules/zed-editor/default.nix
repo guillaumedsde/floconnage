@@ -5,6 +5,11 @@
   ...
 }:
 {
+
+  # Global agent rules, loaded by Zed for all projects (alongside any
+  # AGENTS.md found in the project tree).
+  xdg.configFile."zed/AGENTS.md".source = ./AGENTS.md;
+
   programs.zed-editor = {
     enable = true;
     package = pkgs-unstable.zed-editor;
@@ -21,6 +26,7 @@
       pkgs.uv
       pkgs.nixfmt
     ];
+    defaultEditor = true;
     userSettings = {
       auto_update = false;
       telemetry = {

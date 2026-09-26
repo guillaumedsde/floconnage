@@ -25,7 +25,7 @@
       # Import individually: inputs.<name>.homeManagerModules.<name>
       homeManagerModules = {
         common = import ./modules/common.nix;
-        zed-editor = import ./modules/zed-editor.nix;
+        zed-editor = import ./modules/zed-editor;
         zsh = import ./modules/zsh;
         fzf = import ./modules/fzf.nix;
         fonts = import ./modules/fonts.nix;

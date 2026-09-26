@@ -19,7 +19,6 @@
 
   home.sessionVariables = {
     DIFFPROG = "zeditor --diff";
-    EDITOR = "zeditor --wait";
   };
 
   # Let Home Manager install and manage itself.
