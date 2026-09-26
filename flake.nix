@@ -44,6 +44,7 @@
         gnome-terminal = import ./modules/gnome-terminal.nix;
         firefox = import ./modules/firefox.nix;
         keepassxc = import ./modules/keepassxc.nix;
+        bat = import ./modules/bat;
       };
 
       homeConfigurations."architect" = home-manager.lib.homeManagerConfiguration {
