@@ -26,6 +26,10 @@
         SearchInAllDatabases = true;
       };
       SSHAgent.Enabled = true;
+      # home-manager makes KeepassXC configuration file read only
+      # so KeeShare certificates can't be written to it
+      # https://github.com/nix-community/home-manager/issues/8257
+      KeeShare.Active = false;
     };
   };
 }
