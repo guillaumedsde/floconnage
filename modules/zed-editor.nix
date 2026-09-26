@@ -10,6 +10,9 @@ let
     max_tokens = 1000000;
     max_output_tokens = 128000;
     max_completion_tokens = 200000;
+    supports_tools = true;
+    supports_thinking = true;
+    supports_images = false;
   };
 in
 {
