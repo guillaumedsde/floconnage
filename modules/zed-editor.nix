@@ -4,17 +4,6 @@
   lib,
   ...
 }:
-let
-  glmModel = name: {
-    inherit name;
-    max_tokens = 1000000;
-    max_output_tokens = 128000;
-    max_completion_tokens = 200000;
-    supports_tools = true;
-    supports_thinking = true;
-    supports_images = false;
-  };
-in
 {
   programs.zed-editor = {
     enable = true;
@@ -49,28 +38,13 @@ in
       project_panel.dock = "left";
       base_keymap = "VSCode";
       terminal.max_scroll_history_lines = 25000;
-      # TODO
-      # buffer_font_family = "Fira Code";
+      buffer_font_family = "Fira Code";
       theme = "Ayu Light";
       agent = {
         sidebar_side = "right";
         dock = "right";
         default_profile = "write";
-        default_model = {
-          provider = "Mistral OpenAI API";
-          model = "zai-glm-5-3";
-          enable_thinking = true;
-        };
-      };
-      language_models = {
-        mistral = {
-          api_url = "https://api.eu.mistral.ai/v1";
-          available_models = [
-            (glmModel "zai-glm-5-2")
-            (glmModel "zai-glm-5-3")
-          ];
-        };
-        ollama = { };
+        commit_message_instructions = "Use the Conventional Commits format: <type>(<scope>): <description>.";
       };
       context_servers = {
         "OpenTofu MCP" = {
