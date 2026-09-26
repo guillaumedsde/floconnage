@@ -33,6 +33,7 @@
         firefox = import ./modules/firefox.nix;
         keepassxc = import ./modules/keepassxc.nix;
         bat = import ./modules/bat.nix;
+        git = import ./modules/git.nix;
       };
     };
 }
