@@ -70,7 +70,7 @@ in
       language_models = {
         openai_compatible = {
           "Mistral OpenAI API" = {
-            api_url = "https://api.mistral.ai/v1";
+            api_url = "https://api.eu.mistral.ai/v1";
             available_models = [
               (glmModel "zai-glm-5-2")
               (glmModel "zai-glm-5-3")
