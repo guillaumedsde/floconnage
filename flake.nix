@@ -30,6 +30,7 @@
         ./modules/gnome-terminal.nix
         ./modules/firefox.nix
         ./modules/keepassxc.nix
+        ./modules/bat
       ];
     in
     {
