@@ -22,10 +22,6 @@
       "dockerfile"
       "golangci-lint"
     ];
-    extraPackages = [
-      pkgs.uv
-      pkgs.nixfmt
-    ];
     defaultEditor = true;
     userSettings = {
       auto_update = false;

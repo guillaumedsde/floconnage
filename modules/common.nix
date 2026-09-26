@@ -15,6 +15,10 @@
   home.packages = [
     pkgs.kubectl
     pkgs.jq
+    pkgs.ansible
+    pkgs.ansible-lint
+    pkgs.uv
+    pkgs.nixfmt
   ];
 
   home.sessionVariables = {
