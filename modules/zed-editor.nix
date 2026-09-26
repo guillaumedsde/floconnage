@@ -10,14 +10,6 @@ let
     max_tokens = 1000000;
     max_output_tokens = 128000;
     max_completion_tokens = 200000;
-    capabilities = {
-      tools = true;
-      images = false;
-      parallel_tool_calls = false;
-      prompt_cache_key = false;
-      chat_completions = true;
-      interleaved_reasoning = false;
-    };
   };
 in
 {
@@ -68,14 +60,12 @@ in
         };
       };
       language_models = {
-        openai_compatible = {
-          "Mistral OpenAI API" = {
-            api_url = "https://api.eu.mistral.ai/v1";
-            available_models = [
-              (glmModel "zai-glm-5-2")
-              (glmModel "zai-glm-5-3")
-            ];
-          };
+        mistral = {
+          api_url = "https://api.eu.mistral.ai/v1";
+          available_models = [
+            (glmModel "zai-glm-5-2")
+            (glmModel "zai-glm-5-3")
+          ];
         };
         ollama = { };
       };
