@@ -4,6 +4,22 @@
   lib,
   ...
 }:
+let
+  glmModel = name: {
+    inherit name;
+    max_tokens = 1000000;
+    max_output_tokens = 128000;
+    max_completion_tokens = 200000;
+    capabilities = {
+      tools = true;
+      images = false;
+      parallel_tool_calls = false;
+      prompt_cache_key = false;
+      chat_completions = true;
+      interleaved_reasoning = false;
+    };
+  };
+in
 {
   programs.zed-editor = {
     enable = true;
@@ -47,7 +63,7 @@
         default_profile = "write";
         default_model = {
           provider = "Mistral OpenAI API";
-          model = "zai-glm-5-2";
+          model = "zai-glm-5-3";
           enable_thinking = true;
         };
       };
@@ -56,20 +72,8 @@
           "Mistral OpenAI API" = {
             api_url = "https://api.mistral.ai/v1";
             available_models = [
-              {
-                name = "zai-glm-5-2";
-                max_tokens = 1000000;
-                max_output_tokens = 128000;
-                max_completion_tokens = 200000;
-                capabilities = {
-                  tools = true;
-                  images = false;
-                  parallel_tool_calls = false;
-                  prompt_cache_key = false;
-                  chat_completions = true;
-                  interleaved_reasoning = false;
-                };
-              }
+              (glmModel "zai-glm-5-2")
+              (glmModel "zai-glm-5-3")
             ];
           };
         };
