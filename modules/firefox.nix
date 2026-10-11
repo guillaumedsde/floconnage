@@ -23,6 +23,38 @@
         "browser.urlbar.trustPanel.breachAlerts" = false;
         "browser.urlbar.trustPanel.breachAlerts.featureGate" = false;
       };
+      search = {
+        force = true;
+        default = "Startpage";
+        order = [
+          "Startpage"
+          "google"
+        ];
+        engines = {
+          "Startpage" = {
+            urls = [{
+              template = "https://www.startpage.com/sp/search";
+              params = [{
+                name = "query";
+                value = "{searchTerms}";
+              }];
+            }];
+            icon = "https://www.startpage.com/favicon.ico";
+            definedAliases = [ "@sp" ];
+          };
+          # Hide all built-in engines except Google.
+          bing.metaData.hidden = true;
+          ddg.metaData.hidden = true;
+          ebay.metaData.hidden = true;
+          amazondotcom-us.metaData.hidden = true;
+          wikipedia.metaData.hidden = true;
+          wikipedia-fr.metaData.hidden = true;
+          qwant.metaData.hidden = true;
+          ecosia.metaData.hidden = true;
+          reddit.metaData.hidden = true;
+          youtube.metaData.hidden = true;
+        };
+      };
     };
     nativeMessagingHosts = with pkgs; [
       keepassxc
