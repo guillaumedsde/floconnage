@@ -67,7 +67,7 @@ in
       # Now that the config file is writable, KeePassXC can persist its
       # KeeShare certificates in it, so sharing can be enabled (but we
       # default to disabled)
-      KeeShare.Active = false;
+      # KeeShare.Active =;
     };
   };
 
