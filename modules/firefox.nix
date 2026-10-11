@@ -25,30 +25,41 @@
       };
       search = {
         force = true;
-        default = "Startpage";
-        order = [
-          "Startpage"
-          "google"
-        ];
+        # Firefox ships its own "Startpage" engine and drops custom
+        # search.json engines that share its name, so use a distinct
+        # name/id for ours.
+        default = "Startpage (prfe)";
+        order = [ "Startpage (prfe)" ];
         engines = {
-          "Startpage" = {
+          "Startpage (prfe)" = {
             urls = [{
-              template = "https://www.startpage.com/do/mypage.pl";
+              # /do/mypage.pl only loads the preferences encoded in `prfe`
+              # (it ignores the query); /sp/search is the real search endpoint
+              # and honors both `query` and `prfe`.
+              # Per Startpage's own recommendation, `query` comes first and the
+              # preferences token is appended after it.
+              template = "https://www.startpage.com/sp/search";
               params = [
-                {
-                  name = "prfe";
-                  value = "f07607ab47866cc1dab2a9fd34fab2a84372edc66436030710b03db339dd39170a7f517debea64dca5e839aa0b3f535f1b5fe7b55e1aeee8c36b52b3612c71ab7d4ee7418a70afa653269c09c6267612";
-                }
                 {
                   name = "query";
                   value = "{searchTerms}";
+                }
+                {
+                  name = "prfe";
+                  value = "a15b3f89097cfab398a42c911ba5ef3d8d7989e3688b4a1184a3b68f3c9943e2328a8d056dcdc7e7fbcd63e7e6e9827ce6c17eddec951c868f410a299dc1025542db22baa06e51454ef4e2cf437e405a";
                 }
               ];
             }];
             icon = "https://www.startpage.com/favicon.ico";
             definedAliases = [ "@sp" ];
           };
-          # Hide all built-in engines except Google.
+          # Hide all built-in engines.
+          # Firefox now ships its own "Startpage" engine (id: startpage,
+          # q + segment=startpage.apex.desktop params, no prfe); hide it so
+          # only our prfe-enabled engine above is used.
+          startpage.metaData.hidden = true;
+          google.metaData.hidden = true;
+          perplexity.metaData.hidden = true;
           bing.metaData.hidden = true;
           ddg.metaData.hidden = true;
           ebay.metaData.hidden = true;
