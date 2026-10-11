@@ -43,7 +43,7 @@
       buffer_font_family = "Fira Code";
       theme = "Ayu Light";
       agent = {
-        sidebar_side = "right";
+        threads_sidebar.position = "right";
         dock = "right";
         default_profile = "write";
         commit_message_instructions = "Use the Conventional Commits format: <type>(<scope>): <description>.";
