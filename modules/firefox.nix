@@ -33,11 +33,17 @@
         engines = {
           "Startpage" = {
             urls = [{
-              template = "https://www.startpage.com/sp/search";
-              params = [{
-                name = "query";
-                value = "{searchTerms}";
-              }];
+              template = "https://www.startpage.com/do/mypage.pl";
+              params = [
+                {
+                  name = "prfe";
+                  value = "f07607ab47866cc1dab2a9fd34fab2a84372edc66436030710b03db339dd39170a7f517debea64dca5e839aa0b3f535f1b5fe7b55e1aeee8c36b52b3612c71ab7d4ee7418a70afa653269c09c6267612";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
             }];
             icon = "https://www.startpage.com/favicon.ico";
             definedAliases = [ "@sp" ];
