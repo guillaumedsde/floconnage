@@ -127,7 +127,14 @@
           ];
         };
         ansible.settings = {
-          ansible.path = lib.getExe' pkgs.ansible "ansible";
+          # Same python env as the profile ansible installed by the common
+          # module (modules/common.nix) — identical expression, so identical
+          # store path — so the LSP and the CLI run the same interpreter and
+          # module paths. Keep the two expressions in sync.
+          ansible.path = lib.getExe' (pkgs.python314.withPackages (ps: [
+            ps.ansible-core
+            ps.tomlkit
+          ])) "ansible";
           validation.lint.path = lib.getExe pkgs.ansible-lint;
         };
         yaml-language-server = {
